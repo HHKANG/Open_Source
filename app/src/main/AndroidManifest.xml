@@ -15,6 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Sign_Up" />
+        <activity android:name=".Find_ID_Password" />
+        <activity android:name=".Main_page"></activity>
     </application>
 
 </manifest>
