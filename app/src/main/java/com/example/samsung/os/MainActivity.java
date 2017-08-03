@@ -14,5 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
         textView = (TextView)findViewById(R.id.phoneNumber);
         //앙 호형띠~
+        //zzzzzz
     }
 }
