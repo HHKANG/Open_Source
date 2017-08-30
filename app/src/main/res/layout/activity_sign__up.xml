@@ -25,7 +25,7 @@
             android:textSize="19dp" />
 
         <EditText
-            android:id="@+id/login_id"
+            android:id="@+id/login_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -34,12 +34,6 @@
             android:hint="닉네임을 입력하세요"
             android:inputType="textPersonName"
             android:textStyle="bold" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="중복확인"
-            android:id="@+id/check"/>
     </LinearLayout>
 
     <LinearLayout
@@ -256,35 +250,24 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:hint="이메일 또는 핸드폰을 입력하세요"/>
+                android:hint="이메일 또는 핸드폰을 입력하세요"
+                android:inputType="textPassword"/>
 
             <Button
+                android:id="@+id/authBt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="인증번호 발송"/>
+                android:text="인증번호 발송" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/authLl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:gravity="center"
+        android:gravity="left"
         android:orientation="horizontal">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:hint="인증번호를 입력하세요"
-            android:inputType="textPassword" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="인증번호 확인"/>
     </LinearLayout>
 
     <LinearLayout
@@ -298,11 +281,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/signupBt"
             android:text="회원가입"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/cancelBt"
             android:text="취소"/>
     </LinearLayout>
 </LinearLayout>

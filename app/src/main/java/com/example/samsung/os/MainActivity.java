@@ -69,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
                     String auth = loginChk.get("auth").toString();
                     String key = loginChk.get("key").toString();
                     String msg = loginChk.get("msg").toString();
-                    System.out.println(auth);
-                    System.out.println(key);
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
                     if(auth.equals("true")){
                         Intent intent = new Intent(getApplicationContext(), Main_page.class);
