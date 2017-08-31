@@ -7,28 +7,27 @@
     tools:context="com.example.samsung.os.Sign_Up">
 
     <LinearLayout
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:gravity="center"
+        android:gravity="left|center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/textView2"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.31"
             android:text="닉네임 : "
             android:textAlignment="viewEnd"
-            android:textStyle="bold"
             android:textColor="#000000"
-            android:textSize="19dp" />
+            android:textSize="19sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/login_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
             android:ems="10"
             android:gravity="center"
             android:hint="닉네임을 입력하세요"
@@ -37,207 +36,222 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:gravity="center"
+        android:gravity="left|center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="성 별 : "
-            android:textSize="19dp"
+            android:textAlignment="viewEnd"
             android:textColor="#000000"
-            android:textStyle="bold"/>
+            android:textSize="19sp"
+            android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="19dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:text="남"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/man"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="19dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:text="여"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/woman"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="19dp"
-            android:textStyle="bold"
-            android:text="생년/월/일 : "/>
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </Spinner>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="19dp"
-            android:textStyle="bold"
-            android:text="년"/>
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </Spinner>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="19dp"
-            android:textStyle="bold"
-            android:text="월"/>
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </Spinner>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="19dp"
-            android:textStyle="bold"
-            android:text="일"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="19dp"
-            android:textStyle="bold"
-            android:text="비밀번호 : " />
-
-        <EditText
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:textStyle="bold"
-            android:hint="비밀번호를 입력하세요"
-            android:inputType="textPassword" />
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="남"
+                android:id="@+id/man"
+                android:textColor="#000000"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="여"
+                android:id="@+id/woman"
+                android:textColor="#000000"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+        </RadioGroup>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="left|center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/textView"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
+            android:text="생년월일 : "
+            android:textAlignment="viewEnd"
             android:textColor="#000000"
-            android:textSize="19dp"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Spinner
+                android:id="@+id/year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="년"
+                android:textColor="#000000"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="월"
+                android:textColor="#000000"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일"
+                android:textColor="#000000"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 : "
+            android:textAlignment="viewEnd"
             android:textStyle="bold"
-            android:text="비밀번호 확인 : "
-            android:layout_weight="0.01"/>
+            android:textColor="#000000"
+            android:textSize="19sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textStyle="bold"
+            android:id="@+id/login_pw"
             android:hint="비밀번호를 입력하세요"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="비밀번호확인 : "
+            android:textAlignment="viewEnd"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:id="@+id/login_pw_chk"
+            android:hint="비밀번호를 확인하세요"
             android:layout_weight="1"
             android:inputType="textPassword" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:gravity="center"
+        android:gravity="left|center_vertical"
         android:orientation="horizontal">
-
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="19dp"
+            android:text="인증방법선택 : "
+            android:textAlignment="viewEnd"
             android:textStyle="bold"
-            android:text="인증 방법 선택 : "/>
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="19dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:text="이메일"/>
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:id="@+id/select_auth">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/email"
+                android:text="이메일"/>
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="19dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:text="핸드폰"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/phone"
+                android:text="핸드폰"/>
+        </RadioGroup>
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|center_vertical"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -250,7 +264,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:hint="이메일 또는 핸드폰을 입력하세요"
+                android:id="@+id/id"
+                android:hint="아이디를 입력하세요"
                 android:inputType="textPassword"/>
 
             <Button
@@ -263,31 +278,30 @@
 
     <LinearLayout
         android:id="@+id/authLl"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:gravity="left"
+        android:gravity="right"
         android:orientation="horizontal">
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center"
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/signupBt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/signupBt"
-            android:text="회원가입"/>
+            android:text="회원가입" />
 
         <Button
+            android:id="@+id/cancelBt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cancelBt"
-            android:text="취소"/>
+            android:text="취소" />
     </LinearLayout>
 </LinearLayout>
