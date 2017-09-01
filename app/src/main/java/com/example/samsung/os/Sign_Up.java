@@ -48,6 +48,8 @@ public class Sign_Up extends AppCompatActivity {
     Boolean auth = false;
     int authCkh = 1;
     String authNum = "";
+    String authId = "";
+    String reciveAuth = "";
     String gender = "";
     String authType = "";
     String y = "";
@@ -57,6 +59,8 @@ public class Sign_Up extends AppCompatActivity {
     ArrayAdapter adapter;
 
     JSONObject signUpJson = new JSONObject();
+    JSONObject sendAuthJson = new JSONObject();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,6 +176,37 @@ public class Sign_Up extends AppCompatActivity {
         sendAuthBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                inputId = (EditText)findViewById(R.id.id);
+                authId = inputId.getText().toString();
+                if(authId.equals(null) || authId.equals("")) {
+                    System.out.println("아이디를 입력해주세요");
+                    return;
+                }
+                try {
+                    sendAuthJson.put("type", authType);
+                    sendAuthJson.put("to", authId);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Sign_Up.sendAuth sendAuthTask = new Sign_Up.sendAuth();
+                try {
+                    String result = sendAuthTask.execute(1).get();
+                    System.out.println(result);
+                    JSONObject sendChk = new JSONObject(result);
+                    String auth = sendChk.get("auth").toString();
+                    String msg = sendChk.get("msg").toString();
+                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
+                    if(!auth.equals("false")) reciveAuth = auth;
+                    else return;
+                    if(authType.equals("1")) inputAuthNum.setText(reciveAuth);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 authLl = (LinearLayout)findViewById(R.id.authLl);
                 authLl.removeAllViewsInLayout();
                 authLl.addView(inputAuthNum);
@@ -189,7 +224,15 @@ public class Sign_Up extends AppCompatActivity {
             public void onClick(View view) {
                 authNum = inputAuthNum.getText().toString();
                 System.out.println(authNum);
-                auth = true;
+                if(reciveAuth.equals(authNum)) {
+                    Toast.makeText(getApplicationContext(),"인증되었습니다.",Toast.LENGTH_SHORT).show();
+                    mHandler.removeCallbacksAndMessages(null);
+                    auth = true;
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"인증번호가 일치하지 않습니다.",Toast.LENGTH_SHORT).show();
+                    auth = false;
+                }
             }
         });
 
@@ -198,28 +241,38 @@ public class Sign_Up extends AppCompatActivity {
         signupBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                inputName = (EditText)findViewById(R.id.login_name);
+                inputPw = (EditText)findViewById(R.id.login_pw);
+                inputChkPw = (EditText)findViewById(R.id.login_pw_chk);
+                inputId = (EditText)findViewById(R.id.id);
+                signupBt = (Button)findViewById(R.id.signupBt);
+                cancelBt = (Button)findViewById(R.id.cancelBt);
+                String name = inputName.getText().toString();
+                if(name.equals(null) || name.equals("")) {
+                    System.out.println("닉네임을 입력해주세요");
+                    return;
+                }
+                String pw = inputPw.getText().toString();
+                String chkPw = inputChkPw.getText().toString();
+                if(!pw.equals(chkPw) && !pw.equals(null) && !pw.equals("")) {
+                    System.out.println("비밀번호가 일치하지 않습니다.");
+                    return;
+                }
+                String id = inputId.getText().toString();
+                if(!id.equals(authId)) {
+                    System.out.println("재인증이 필요합니다.");
+                    return;
+                }
+                y = inputY.getSelectedItem().toString();
+                m = inputM.getSelectedItem().toString();
+                d = inputD.getSelectedItem().toString();
                 if (auth) {
-                    inputName = (EditText)findViewById(R.id.login_name);
-                    inputPw = (EditText)findViewById(R.id.login_pw);
-                    inputChkPw = (EditText)findViewById(R.id.login_pw_chk);
-                    inputId = (EditText)findViewById(R.id.id);
-                    signupBt = (Button)findViewById(R.id.signupBt);
-                    cancelBt = (Button)findViewById(R.id.cancelBt);
-                    String name = inputName.getText().toString();
-                    String pw = inputPw.getText().toString();
-                    String chkPw = inputChkPw.getText().toString();
-                    if(!pw.equals(chkPw)) {
-                        System.out.println("비밀번호가 일치하지 않습니다.");
-                        return;
-                    }
-                    String id = inputId.getText().toString();
-                    y = inputY.getSelectedItem().toString();
-                    m = inputM.getSelectedItem().toString();
-                    d = inputD.getSelectedItem().toString();
 
                     try {
                         signUpJson.put("name", name);
                         signUpJson.put("gender", gender);
+                        if(m.length() == 1) m = "0" + m;
+                        if(d.length() == 1) d = "0" + d;
                         signUpJson.put("birth", y+m+d);
                         if(authType.equals("0")){
                             signUpJson.put("phone", null);
@@ -254,15 +307,6 @@ public class Sign_Up extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    /*
-                    $name = $data['name'];
-                    $gender = $data['gender'];
-                    $birth = $data['birth'];
-                    $email = $data['email'];
-                    $phone = $data['phone'];
-                    $id = $data['id'];
-                    $pw = $data['pw'];
-                     */
                 } else Toast.makeText(getApplicationContext(), "인증이 완료되지 않았습니다.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -313,6 +357,79 @@ public class Sign_Up extends AppCompatActivity {
         protected String doInBackground(Integer... params) {
             try{
                 String oss = signUpJson.toString();
+
+                // connection 설정
+                URL url = new URL(Url);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Accept", "application/json");
+                conn.setRequestProperty("Content-type", "application/json");
+
+                // OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
+                conn.setDoOutput(true);
+                // InputStream으로 서버로 부터 응답을 받겠다는 옵션.
+                conn.setDoInput(true);
+
+                OutputStream os = conn.getOutputStream();
+                os.write(oss.getBytes("UTF-8"));
+                os.flush();
+                // receive response as inputStream
+                try {
+                    is = conn.getInputStream();
+                    // convert inputstream to string
+                    if(is != null){
+                        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                        String line;
+                        StringBuffer response = new StringBuffer();
+                        while((line = br.readLine()) != null) {
+                            response.append(line);
+                            response.append('\r');
+                        }
+                        br.close();
+
+                        result = response.toString();
+                        System.out.println(result);
+                    }
+                    else
+                        result = "Did not work!";
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+                finally {
+                    conn.disconnect();
+                }
+
+            }catch(MalformedURLException e) {
+                e.printStackTrace();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) { super.onProgressUpdate(values); }
+
+        @Override
+        protected void onPostExecute(String s) { super.onPostExecute(s); }
+    }
+
+    // 인증 asyncTask
+    public class sendAuth extends AsyncTask<Integer, Void, String> {
+        private String Url = "http://52.79.150.239/teamProject/account/sendAuth";
+        InputStream is = null;
+        String result = "";
+
+        @Override
+        protected String doInBackground(Integer... params) {
+            try{
+                String oss = sendAuthJson.toString();
 
                 // connection 설정
                 URL url = new URL(Url);

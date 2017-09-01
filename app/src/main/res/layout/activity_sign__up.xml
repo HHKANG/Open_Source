@@ -265,8 +265,7 @@
                 android:gravity="center"
                 android:layout_weight="1"
                 android:id="@+id/id"
-                android:hint="아이디를 입력하세요"
-                android:inputType="textPassword"/>
+                android:hint="아이디를 입력하세요"/>
 
             <Button
                 android:id="@+id/authBt"
