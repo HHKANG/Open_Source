@@ -179,7 +179,7 @@ public class Sign_Up extends AppCompatActivity {
                 inputId = (EditText)findViewById(R.id.id);
                 authId = inputId.getText().toString();
                 if(authId.equals(null) || authId.equals("")) {
-                    System.out.println("아이디를 입력해주세요");
+                    Toast.makeText(getApplicationContext(),"아이디를 입력해주세요",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 try {
@@ -249,25 +249,41 @@ public class Sign_Up extends AppCompatActivity {
                 cancelBt = (Button)findViewById(R.id.cancelBt);
                 String name = inputName.getText().toString();
                 if(name.equals(null) || name.equals("")) {
-                    System.out.println("닉네임을 입력해주세요");
+                    Toast.makeText(getApplicationContext(),"닉네임을 입력해주세요",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String pw = inputPw.getText().toString();
-                String chkPw = inputChkPw.getText().toString();
-                if(!pw.equals(chkPw) && !pw.equals(null) && !pw.equals("")) {
-                    System.out.println("비밀번호가 일치하지 않습니다.");
-                    return;
-                }
-                String id = inputId.getText().toString();
-                if(!id.equals(authId)) {
-                    System.out.println("재인증이 필요합니다.");
+                if(gender.equals(null) || gender.equals("")) {
+                    Toast.makeText(getApplicationContext(),"성별을 선택해주세요",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 y = inputY.getSelectedItem().toString();
                 m = inputM.getSelectedItem().toString();
                 d = inputD.getSelectedItem().toString();
-                if (auth) {
+                if(y.equals(null) || y.equals("") || m.equals(null) || m.equals("") || d.equals(null) || d.equals("")){
+                    Toast.makeText(getApplicationContext(),"생년월일을 선택해주세요.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String pw = inputPw.getText().toString();
+                String chkPw = inputChkPw.getText().toString();
+                if(!pw.equals(chkPw)) {
+                    Toast.makeText(getApplicationContext(),"비밀번호가 일치하지 않습니다.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if(pw.equals(null) || pw.equals("")) {
+                    Toast.makeText(getApplicationContext(),"비밀번호를 입력해주세요.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String id = inputId.getText().toString();
+                if(!id.equals(authId)) {
+                    Toast.makeText(getApplicationContext(),"재인증이 필요합니다.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
+                if(authType.equals(null) || authType.equals("")){
+                    Toast.makeText(getApplicationContext(),"인증 방법을 선택해주세요.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (auth) {
                     try {
                         signUpJson.put("name", name);
                         signUpJson.put("gender", gender);
