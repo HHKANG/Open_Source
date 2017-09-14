@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //pull test
         //아이디/비밀번호 찾기를 눌렀을 경우 해당 페이지로 이동
         Find = (Button)findViewById(R.id.find);
         Find.setOnClickListener(new View.OnClickListener() {
