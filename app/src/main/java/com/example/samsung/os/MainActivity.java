@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), Main_page.class);
                         intent.putExtra("key",key);
                         startActivity(intent);
-                        finish();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
