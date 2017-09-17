@@ -7,7 +7,34 @@
     tools:context="com.example.samsung.os.Sign_Up">
 
     <LinearLayout
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="이름 : "
+            android:textAlignment="viewEnd"
+            android:textColor="#000000"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="이름을 입력하세요"
+            android:inputType="textPersonName"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -247,6 +274,18 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="선택한 인증 방법이 ID가 됩니다."
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -265,7 +304,7 @@
                 android:gravity="center"
                 android:layout_weight="1"
                 android:id="@+id/id"
-                android:hint="아이디를 입력하세요"/>
+                android:hint="ID를 입력하세요"/>
 
             <Button
                 android:id="@+id/authBt"

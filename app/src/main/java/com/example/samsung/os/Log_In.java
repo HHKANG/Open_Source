@@ -24,7 +24,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
-public class MainActivity extends AppCompatActivity {
+public class Log_In extends AppCompatActivity {
     Button Login, Find;
     EditText Login_id, Login_password;
     JSONObject loginJson = new JSONObject();
@@ -33,9 +33,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_log_in);
 
-        //pull test
         //아이디/비밀번호 찾기를 눌렀을 경우 해당 페이지로 이동
         Find = (Button)findViewById(R.id.find);
         Find.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), Main_page.class);
                         intent.putExtra("key",key);
                         startActivity(intent);
-                        finish();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -97,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.signup:
-                Intent intent = new Intent(MainActivity.this, Sign_Up.class);
+                Intent intent = new Intent(Log_In.this, Sign_Up.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 return true;

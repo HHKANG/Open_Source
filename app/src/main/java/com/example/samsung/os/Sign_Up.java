@@ -37,7 +37,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class Sign_Up extends AppCompatActivity {
-    EditText inputName, inputPw, inputChkPw, inputId,inputAuthNum;
+    EditText inputrealname, inputName, inputPw, inputChkPw, inputId,inputAuthNum;
     RadioButton selectMan, selectWoman, selectEmail, selectPhone;
     Spinner inputY, inputM, inputD;
     Button sendAuthBt, checkAuthBt, signupBt, cancelBt;
@@ -241,12 +241,19 @@ public class Sign_Up extends AppCompatActivity {
         signupBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                inputrealname = (EditText)findViewById(R.id.name);
                 inputName = (EditText)findViewById(R.id.login_name);
                 inputPw = (EditText)findViewById(R.id.login_pw);
                 inputChkPw = (EditText)findViewById(R.id.login_pw_chk);
                 inputId = (EditText)findViewById(R.id.id);
                 signupBt = (Button)findViewById(R.id.signupBt);
                 cancelBt = (Button)findViewById(R.id.cancelBt);
+
+                String realname = inputrealname.getText().toString();
+                if(realname.equals(null)||realname.equals("")){
+                    Toast.makeText(getApplicationContext(),"이름을 입력하세요",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String name = inputName.getText().toString();
                 if(name.equals(null) || name.equals("")) {
                     Toast.makeText(getApplicationContext(),"닉네임을 입력해주세요",Toast.LENGTH_SHORT).show();
@@ -285,6 +292,7 @@ public class Sign_Up extends AppCompatActivity {
                 }
                 if (auth) {
                     try {
+                        signUpJson.put("realname",realname);
                         signUpJson.put("name", name);
                         signUpJson.put("gender", gender);
                         if(m.length() == 1) m = "0" + m;
@@ -312,7 +320,7 @@ public class Sign_Up extends AppCompatActivity {
                         String msg = signupChk.get("msg").toString();
                         Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
                         if(auth.equals("true")){
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), Log_In.class);
                             startActivity(intent);
                             finish();
                         }
@@ -332,8 +340,9 @@ public class Sign_Up extends AppCompatActivity {
         cancelBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Log_In.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
