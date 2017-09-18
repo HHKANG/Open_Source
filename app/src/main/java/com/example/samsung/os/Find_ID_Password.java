@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Date;
@@ -242,7 +243,15 @@ public class Find_ID_Password extends AppCompatActivity {
     }
 
     private void Show_find_id(){
-        Toast.makeText(getApplicationContext(),"ID dialog 구현", Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder id_dialog = new AlertDialog.Builder(this);
+        LayoutInflater id_inflater = getLayoutInflater();
+        View id_view = id_inflater.inflate(R.layout.find_id_dialog, null);
+        id_dialog.setView(id_view);
+        id_dialog.setTitle("아이디 찾기");
+        id_dialog.setPositiveButton("Okay", null);
+        final TextView dialog_id = (TextView)id_view.findViewById(R.id.dialog_id);
+        dialog_id.setText("서버와 연동하기");
+        id_dialog.show();
     }
 
     //비밀번호 찾기 완료시 비밀번호를 바꾸도록 하는 Dilog 화면

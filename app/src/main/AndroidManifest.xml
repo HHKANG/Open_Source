@@ -12,16 +12,17 @@
         android:theme="@style/AppTheme">
         <uses-feature android:name="android.hardware.camera2"/>
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Log_In">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".Sign_Up" />
         <activity android:name=".Find_ID_Password" />
         <activity android:name=".Main_page" />
         <activity android:name=".MoneyBook">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".SelMoneyBook"></activity>
     </application>
