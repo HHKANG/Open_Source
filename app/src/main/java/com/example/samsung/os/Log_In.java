@@ -70,7 +70,7 @@ public class Log_In extends AppCompatActivity {
                     String msg = loginChk.get("msg").toString();
                     Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
                     if(auth.equals("true")){
-                        Intent intent = new Intent(getApplicationContext(), Main_page.class);
+                        Intent intent = new Intent(getApplicationContext(), sns_list.class);
                         intent.putExtra("key",key);
                         startActivity(intent);
                     }

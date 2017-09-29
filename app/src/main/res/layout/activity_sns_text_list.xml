@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_select__picture"
+    android:id="@+id/activity_sns_text_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="software.happybubble.Select_Picture">
+    tools:context="com.example.samsung.os.sns_text_list">
 
-    <ListView
-        android:id="@+id/sns_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </ListView>
 </LinearLayout>
